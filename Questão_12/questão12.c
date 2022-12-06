@@ -3,7 +3,6 @@ direita pela subárvore esquerda de todos os nós da árvore */
 #include<stdio.h>
 #include<stdlib.h>
 #include <malloc.h>
-
 typedef struct noarvore{
     int dado;
     struct noarvore *esquerda;

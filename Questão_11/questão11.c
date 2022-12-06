@@ -8,10 +8,8 @@ exemplificado na figura abaixo. (Obs. Não vale trocar apenas os campos item
 ou usar uma lista / fila / pilha auxiliar! Você deverá fazer a manipulação dos
 apontadores para trocar as células de posição).
 */
-
 #include <stdio.h>
 #include <stdlib.h>
-
 
 
 typedef struct lista{

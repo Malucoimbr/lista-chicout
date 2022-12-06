@@ -1,6 +1,5 @@
-/* 2. Utilize uma lista como a que implementamos em sala de aula, com 50 slots; */ 
-
-/* letra A) Crie uma nova função de inserção de dados na lista de inteiros, garantindo que
+/* 2. Utilize uma lista como a que implementamos em sala de aula, com 50 slots; 
+ letra A) Crie uma nova função de inserção de dados na lista de inteiros, garantindo que
 o novo elemento x seja inserido antes do valor maior que ele e depois do valor
 menor que ele, para que a lista sempre fique em ordem crescente; */
 

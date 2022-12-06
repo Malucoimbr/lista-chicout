@@ -1,4 +1,4 @@
-// 1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
+//1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
 
 /*  letra A) Verifique se L1 está ordenada ou não (a ordem pode ser crescente ou
 decrescente)  */

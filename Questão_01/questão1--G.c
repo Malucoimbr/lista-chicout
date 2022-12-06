@@ -1,5 +1,4 @@
 /*
-
 1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
 
 letra G) Gere uma lista L2 onde cada registro contém dois campos de informação: elem 

@@ -1,8 +1,7 @@
 /* Questão 3. Usando listas, crie um programa que guarde strings. Re-implemente todas as
 funcionalidades para que seja possível usar as funções básicas de inserção, remoção,
-busca e detecção de fim de lista; */
-
-/* Letra A) Implemente também a função que retorna o tamanho da lista (quantidade de
+busca e detecção de fim de lista; 
+Letra A) Implemente também a função que retorna o tamanho da lista (quantidade de
 elementos), e a perda de memória (total da lista - quantidade de itens vazios) */
 
 #include <stdio.h>

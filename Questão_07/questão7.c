@@ -1,7 +1,6 @@
 /* Escreva uma função em C para trocar os elementos de índice m e n de uma lista.*/
 
 #include <stdio.h>
-
 int lista[10];
 void printList()
 {

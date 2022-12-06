@@ -1,5 +1,5 @@
 // 1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
-// letra C) Faça uma cópia da Lista L1 em L2, eliminando elementos repetidos;
+// letra C) Faça uma cópia da Lista L1 em L2, eliminando elementos repetidos; 
 
 
 #include <stdio.h>

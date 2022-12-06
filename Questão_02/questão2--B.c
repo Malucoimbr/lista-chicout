@@ -1,6 +1,5 @@
-/* 2. Utilize uma lista como a que implementamos em sala de aula, com 50 slots; */ 
-
-/* letra B) Crie uma outra função que garanta a inserção de números em ordem
+/* 2. Utilize uma lista como a que implementamos em sala de aula, com 50 slots; 
+ letra B) Crie uma outra função que garanta a inserção de números em ordem
 decrescente. Inspire-se na letra anterior; */
 
 #include <stdio.h>

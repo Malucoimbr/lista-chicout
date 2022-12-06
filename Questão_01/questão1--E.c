@@ -1,4 +1,4 @@
-// 1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
+//1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
 // letra E) Inverta L1 colocando o resultado na própria L1;
 
 #include <stdio.h>

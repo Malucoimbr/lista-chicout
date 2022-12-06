@@ -1,5 +1,5 @@
 // Implemente um TAD Lista utilizando Array, acrescentando as seguintes operações:
-// Letra A) Concatenação de duas listas.
+//Letra A) Concatenação de duas listas.
 
 #include <stdio.h>
 #include <stdlib.h>

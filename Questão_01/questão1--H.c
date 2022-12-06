@@ -1,6 +1,5 @@
 // 1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
 //  letra H) Elimine de L1 todas as ocorrências de um elemento dado, L1 ordenada.
-
 #include <stdio.h>
 #include <stdlib.h>
 struct lista{

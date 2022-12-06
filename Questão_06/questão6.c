@@ -1,7 +1,6 @@
 //
 // Created by malu on 30/11/2022.
 //
-
 #include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>

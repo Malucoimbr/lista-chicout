@@ -1,6 +1,5 @@
 /*
 1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
-
 letra I) Assumindo que os elementos da lista L1 são inteiros positivos, forneça os
 elementos que aparecem o maior e o menor número de vezes (forneça os
 elementos e o número de vezes correspondente)

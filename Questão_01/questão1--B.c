@@ -1,5 +1,5 @@
 
-// 1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
+//1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
 // letra B) Faça uma cópia da lista L1 em uma outra lista L2;
 
 #include <stdio.h>

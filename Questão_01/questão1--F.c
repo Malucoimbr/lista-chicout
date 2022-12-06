@@ -1,4 +1,4 @@
-// 1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
+//1. Dada uma lista sequencial ordenada L1, escreva métodos em C que:
 // letra F) Intercale L1 com a lista L2, gerando a lista L3. considere que L1, L2 e L3 são ordenadas 
 
 #include <stdio.h>

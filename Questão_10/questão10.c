@@ -10,11 +10,9 @@ células de posição). Não esqueça de tratar os casos especiais.
 void
 Troca (TipoLista * L, Apondador * P) 
 {
-  
 struct no *ante;
   
 struct no *prox = P->prox;
-  
 if (prox == NULL)
     {
       return;

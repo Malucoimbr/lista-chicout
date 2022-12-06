@@ -7,7 +7,6 @@ seguinte da lista, como mostrado na figura abaixo. (Obs. Não vale trocar apenas
 campo item! Você deverá fazer a manipulação dos apontadores para trocar as duas
 células de posição). Não esqueça de tratar os casos especiais.
 */
-
 void
 Troca (TipoLista * L, Apondador * P) 
 {

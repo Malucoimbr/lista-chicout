@@ -11,7 +11,6 @@ void Relaciona(int Amigo1, int Amigo2, TipoOrkut* pOrkut)
 Considere que o Amigo1 já está cadastrado no Orkut, enquanto o Amigo2 pode ou não
 já estar cadastrado.
 */
-
 #include <stdio.h>
 #include <stdlib.h>
 

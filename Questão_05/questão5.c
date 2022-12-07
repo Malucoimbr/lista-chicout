@@ -1,252 +1,214 @@
-#include<stdio.h>
-#include<stdlib.h>
-typedef struct no{
-    int valor;
-    struct no *proximo;
-}No;
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct node {
+    int dado;
+    struct node *prox;
+}node;
 
-// procedimento para inserir no início
-void inserir_no_inicio(No **lista, int num){
-    No *novo = malloc(sizeof(No));
+typedef struct list {
+    node *ini;
+    node *fim;
+} Lista;
 
-    if(novo){
-        novo->valor = num;
-        novo->proximo = *lista;
-        *lista = novo;
-    }
-    else
-        printf("Erro ao alocar memoria!\n");
+void inicializaFila(Lista *f) {
+    f->ini = NULL;
+    f->fim = NULL;
 }
 
-// procedimento para inserir no fim
-void inserir_no_fim(No **lista, int num){
-    No *aux, *novo = malloc(sizeof(No));
-
-    if(novo){
-        novo->valor = num;
-        novo->proximo = NULL;
-
-        // é o primeiro?
-        if(*lista == NULL)
-            *lista = novo;
-        else{
-            aux = *lista;
-            while(aux->proximo)
-                aux = aux->proximo;
-            aux->proximo = novo;
+void enfileira(int dado, Lista *f) {
+    node *ptr = (node *)malloc(sizeof(node));
+    if (ptr == NULL) {
+        printf("Erro ao alocar memoria");
+        return;
+    } else {
+        ptr->dado = dado;
+        ptr->prox = NULL;
+        if (f->ini == NULL) {
+            f->ini = ptr;
+        } else {
+            f->fim->prox = ptr;
         }
+
+        f->fim = ptr;
     }
-    else
-        printf("Erro ao alocar memoria!\n");
 }
 
-// procedimento para inserir no meio
-void inserir_no_meio(No **lista, int num, int ant){
-    No *aux, *novo = malloc(sizeof(No));
+int desenfileira(Lista *f) {
+    node *ptr = f->ini;
+    int dado;
+    if (ptr != NULL) {
+        f->ini = ptr->prox;
+        ptr->prox = NULL;
+        dado = ptr->dado;
+        free(ptr);
+        if (f->ini == NULL) {
+            f->fim = NULL;
+        }
 
-    if(novo){
-        novo->valor = num;
-        // é o primeiro?
-        if(*lista == NULL){
-            novo->proximo = NULL;
-            *lista = novo;
-        }
-        else{
-            aux = *lista;
-            while(aux->valor != ant && aux->proximo)
-                aux = aux->proximo;
-            novo->proximo = aux->proximo;
-            aux->proximo = novo;
-        }
+        return dado;
+    } else {
+        printf("Fila Vazia.");
+        return 0;
     }
-    else
-        printf("Erro ao alocar memoria!\n");
-}
-//Ordenar (sort) uma lista por ordem crescente
-void inserir_ordenado(No **lista, int num){
-    No *aux, *novo = malloc(sizeof(No));
-
-    if(novo){
-        novo->valor = num;
-        // a lista está vazia?
-        if(*lista == NULL){
-            novo->proximo = NULL;
-            *lista = novo;
-        } // é o menor?
-        else if(novo->valor < (*lista)->valor){
-            novo->proximo = *lista;
-            *lista = novo;
-        }
-        else{
-            aux = *lista;
-            while(aux->proximo && novo->valor > aux->proximo->valor)
-                aux = aux->proximo;
-            novo->proximo = aux->proximo;
-            aux->proximo = novo;
-        }
-    }
-    else
-        printf("Erro ao alocar memoria!\n");
 }
 
-//Ordenar (sort) ima lista por ordem decrescente
-void inserir_decrescente(No **lista, int num){
-    No *aux, *novo = malloc(sizeof(No));
-
-    if(novo){
-        novo->valor = num;
-        // a lista está vazia?
-        if(*lista == NULL){
-            novo->proximo = NULL;
-            *lista = novo;
-        } // é o menor?
-        else if(novo->valor > (*lista)->valor){
-            novo->proximo = *lista;
-            *lista = novo;
+void imprimeFile(Lista *f) {
+    node *ptr = f->ini;
+    if (ptr != NULL) {
+        while (ptr != NULL) {
+            printf(" %d ", ptr->dado);
+            ptr = ptr->prox;
         }
-        else{
-            aux = *lista;
-            while(aux->proximo && novo->valor < aux->proximo->valor)
-                aux = aux->proximo;
-            novo->proximo = aux->proximo;
-            aux->proximo = novo;
-        }
+    } else {
+        printf("Fila Vazia\n");
+        return;
     }
-    else
-        printf("Erro ao alocar memoria!\n");
 }
 
-No* remover(No **lista, int num){
-    No *aux, *remover = NULL;
+void concat(Lista *f1, Lista *f2, Lista *dest)
+{
+    node *ptrF1 = f1->ini;
+    node *ptrF2 = f2->ini;
 
-    if(*lista){
-        if((*lista)->valor == num){
-            remover = *lista;
-            *lista = remover->proximo;
+    if(ptrF1 == NULL && ptrF2 == NULL){
+        printf("Fila Vazia");
+        return;
+    }
+
+    if (ptrF1 != NULL) {
+        while (ptrF1 != NULL) {
+            enfileira(ptrF1->dado, dest);
+            ptrF1 = ptrF1->prox;
         }
-        else{
-            aux = *lista;
-            while(aux->proximo && aux->proximo->valor != num)
-                aux = aux->proximo;
-            if(aux->proximo){
-                remover = aux->proximo;
-                aux->proximo = remover->proximo;
+    }
+
+    if (ptrF2 != NULL) {
+        while (ptrF2 != NULL) {
+            enfileira(ptrF2->dado, dest);
+            ptrF2 = ptrF2->prox;
+        }
+    }
+
+}
+void divFila(int itensPorFila, Lista *l1, Lista *l2, Lista *l3 ){
+    node *ptr = l1->ini;
+
+    if (ptr != NULL) {
+
+        for (int j = 0; j < itensPorFila; j++) {
+            enfileira(ptr->dado, l2);
+            ptr = ptr->prox;
+        }
+
+        for (int k = 0; k < itensPorFila; k++) {
+            enfileira(ptr->dado, l3);
+            ptr = ptr->prox;
+        }
+
+
+    } else {
+        printf("Fila Vazia\n");
+        return;
+    }
+
+
+}
+
+
+void copy(Lista *lista1, Lista *dest)
+{
+    node *ptrL1 = lista1->ini;
+
+    if(ptrL1 == NULL){
+        printf("Fila Vazia");
+        return;
+    }
+
+    if (ptrL1 != NULL) {
+        while (ptrL1 != NULL) {
+            enfileira(ptrL1->dado, dest);
+            ptrL1 = ptrL1->prox;
+        }
+    }
+}
+
+void search(int element, Lista *l)
+{
+    node *ptr = l->ini;
+    if (ptr != NULL) {
+        while (ptr != NULL) {
+            if(ptr->dado == element)
+            {
+                printf("Numero buscado: %i Numero encontrado: %d Endereço de memoria: %i", element, ptr->dado, &ptr->dado);
+                return;
+            }
+            ptr = ptr->prox;
+
+        }
+
+        printf("Valor não encontrado");
+    } else {
+        printf("Fila Vazia\n");
+        return;
+    }
+}
+void ordenaEmostra(Lista *f1){
+    node *ptr = f1->ini;
+    node *ptr2 = ptr->prox;
+
+    int aux;
+
+    while(ptr != NULL){
+        imprimeFILA(f1);
+
+        if(ptr->dado > ptr2->dado){
+
+
+            aux = ptr->dado;
+
+            ptr->dado = ptr2->dado;
+            ptr->prox->dado = aux;
+            if(ptr2 != NULL && ptr != NULL){
+                ptr2 = ptr2->prox;
+
+                ptr = ptr->prox;
+
+            }
+
             }
         }
+
+
     }
-    return remover;
-}
 
-//Dividir uma lista em várias 
-void dividir(No **L, No **P, No **I){
-	No *aux = *L;
-	  while(aux){
-      if(aux -> valor > 0){
-      if (aux->valor % 2 == 0)
-  	    inserir_no_inicio{P, aux ->valor};
-        else
-  	    inserir_no_inicio(I,aux->valor);
-}
-      }
-}
 
-//Localize/ Pesquise/Encontre (search) elementos
-No* buscar(No **lista, int num){
-    No *aux, *no = NULL;
 
-    aux = *lista;
-    while(aux && aux->valor != num)
-        aux = aux->proximo;
-    if(aux)
-        no = aux;
-    return no;
-}
 
-void imprimir(No *no){
-    printf("\n\tLista: ");
-    while(no){
-        printf("%d ", no->valor);
-        no = no->proximo;
+int main(void) {
+    Lista *fila1 = (Lista *)malloc(sizeof(Lista));
+    Lista *fila2 = (Lista *)malloc(sizeof(Lista));
+    Lista *fila3 = (Lista *)malloc(sizeof(Lista));
+    if (fila1 == NULL) {
+        printf("Erro de alocação");
+        exit(-1);
+    } else {
+        inicializaFila(fila1);
+        inicializaFila(fila2);
+        inicializaFila(fila3);
+        enfileira(10, fila1);
+        enfileira(20, fila1);
+        enfileira(30, fila1);
+        enfileira(40, fila2);
+        enfileira(50, fila2);
+        enfileira(60, fila2);
+
+
+        concat(fila1, fila2, fila3);
+        imprimeFila(fila1);
+        printf("\n");
+        imprimeFila(fila2);
+        printf("\n");
+        imprimeFila(fila3);
     }
-    printf("\n\n");
 }
 
-int main(){
-
-    int opcao, valor, anterior;
-    No *removido, *lista = NULL;
-    No *Par == NULL, Impar = NULL;
-
-    do{
-        printf("\n\t0 - Sair\n\t1 - InserirI\n\t2 - inserirF\n\t3 - InserirM\n\t4 - Inserir Crescente\n\t5 - Remover\n\t6 - Imprimir\n\t7 - Buscar\n\t8-Inserir decrescente\n\t 9-dividir");
-        scanf("%d", &opcao);
-
-        switch(opcao){
-        case 1:
-            printf("Digite um valor: ");
-            scanf("%d", &valor);
-            inserir_no_inicio(&lista, valor);
-            break;
-        case 2:
-            printf("Digite um valor: ");
-            scanf("%d", &valor);
-            inserir_no_fim(&lista, valor);
-            break;
-        case 3:
-            printf("Digite um valor e o valor de referencia: ");
-            scanf("%d%d", &valor, &anterior);
-            inserir_no_meio(&lista, valor, anterior);
-            break;
-        case 4:
-            printf("Digite um valor: ");
-            scanf("%d", &valor);
-            inserir_ordenado(&lista, valor);
-            break;
-        case 5:
-            printf("Digite um valor a ser removido: ");
-            scanf("%d", &valor);
-            removido = remover(&lista, valor);
-            if(removido){
-                printf("Elemento a ser removido: %d\n", removido->valor);
-                free(removido);
-            }
-            else
-                printf("Elemento inexistente!\n");
-            break;
-        case 6:
-          prinf("lista L:\n")
-            imprimir(lista);
-           prinf("lista P:\n")
-          imprimir(Par);
-           prinf("lista I:\n")
-          imprimir(Impar);
-          
-            break;
-        case 7:
-            printf("Digite um valor a ser buscado: ");
-            scanf("%d", &valor);
-            removido = buscar(&lista, valor);
-            if(removido)
-                printf("Elemento encontrado: %d\n", removido->valor);
-            else
-                printf("Elemento nao encontrado!\n");
-            break;
-            case 8:
-            printf("Digite um valor: ");
-            scanf("%d", &valor);
-            inserir_decrescente(&lista, valor);
-            break;
-          case 9:
-          dividir(&lista, &Par, &Impar);
-          printf("divisão realizada com sucesso");
-          break;
-          
-        default:
-            if(opcao != 0)
-                printf("Opcao invalida!\n");
-        }
-
-    }while(opcao != 0);
-
-    return 0;
-}
